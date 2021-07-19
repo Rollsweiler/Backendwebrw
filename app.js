@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
+const port = 3000;
 
 mongoose.connect(
   "mongodb+srv://tnlC58qQrhERM4qV:tnlC58qQrhERM4qV@cluster0.zi8cr.mongodb.net/rollsweiler?retryWrites=true&w=majority",
@@ -56,4 +57,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
