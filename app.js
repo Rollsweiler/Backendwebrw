@@ -5,19 +5,22 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  autoIndex: true, //this is the code I added that solved it all
-  keepAlive: true,
-  poolSize: 10,
-  bufferMaxEntries: 0,
-  connectTimeoutMS: 10000,
-  socketTimeoutMS: 45000,
-  family: 4, // Use IPv4, skip trying IPv6
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://tnlC58qQrhERM4qV:tnlC58qQrhERM4qV@cluster0.zi8cr.mongodb.net/rollsweiler?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    autoIndex: true, //this is the code I added that solved it all
+    keepAlive: true,
+    poolSize: 10,
+    bufferMaxEntries: 0,
+    connectTimeoutMS: 10000,
+    socketTimeoutMS: 45000,
+    family: 4, // Use IPv4, skip trying IPv6
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  }
+);
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
