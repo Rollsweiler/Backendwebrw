@@ -39,7 +39,7 @@ export const create = async (req, res) => {
       favoriteProduct,
     });
     await newItem.save();
-    return res.json({ error: false });
+    return res.status(200).json({ error: false });
   } catch (err) {
     return res.status(500).json(err);
   }
