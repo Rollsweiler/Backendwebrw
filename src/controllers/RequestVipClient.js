@@ -17,7 +17,7 @@ export const create = async (req, res) => {
       throw `No ha indicado el fecha nacimiento`;
     }
     if (!direction) {
-      throw `No ha indicado el fecha direccion`;
+      throw `No ha indicado la direccion`;
     }
     if (!dni) {
       throw `No ha indicado rut`;
