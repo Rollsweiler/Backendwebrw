@@ -4,7 +4,32 @@ export const create = async (req, res) => {
   try {
     const { name, email, phone, birthdate, direction, dni, favoriteProduct } =
       req.body;
-    const item = new requestVipClientModel({
+    if (!name) {
+      throw `No ha indicado el nombre`;
+    }
+    if (!email) {
+      throw `No ha indicado el email`;
+    }
+    if (!phone) {
+      throw `No ha indicado el telefono`;
+    }
+    if (!birthdate) {
+      throw `No ha indicado el fecha nacimiento`;
+    }
+    if (!direction) {
+      throw `No ha indicado el fecha direccion`;
+    }
+    if (!dni) {
+      throw `No ha indicado rut`;
+    }
+    if (!favoriteProduct) {
+      throw `No ha indicado producto favorito`;
+    }
+    const item = await requestVipClientModel.findOne({});
+    if (item) {
+      throw `Usuario ya registrado`;
+    }
+    const newItem = new requestVipClientModel({
       name,
       email,
       phone,
@@ -13,11 +38,9 @@ export const create = async (req, res) => {
       dni,
       favoriteProduct,
     });
-    await item.save();
-    res.json({ error: false });
-
-    res.status(200).json({ token });
+    await newItem.save();
+    return res.json({ error: false });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json(err);
   }
 };
