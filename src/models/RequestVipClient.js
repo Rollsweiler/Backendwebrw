@@ -1,3 +1,4 @@
+import regeneratorRuntime from "regenerator-runtime";
 const mongoose = require("mongoose");
 
 const RequestVipClientSchema = new mongoose.Schema({
