@@ -25,7 +25,7 @@ export const create = async (req, res) => {
     if (!favoriteProduct) {
       throw `No ha indicado producto favorito`;
     }
-    const item = await requestVipClientModel.findOne({});
+    const item = await requestVipClientModel.findOne({ dni });
     if (item) {
       throw `Usuario ya registrado`;
     }
